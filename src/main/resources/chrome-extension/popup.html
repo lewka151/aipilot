@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>AIPilot</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <strong>AIPilot</strong>
+    <span>Qwen · DeepSeek</span>
+  </header>
+  <label>Сервер API
+    <input id="apiBase" type="url" placeholder="https://platforma151.chickenkiller.com">
+  </label>
+  <label>Bridge token
+    <input id="token" type="text" placeholder="из настроек приложения" autocomplete="off">
+  </label>
+  <p id="status" class="status"></p>
+  <div class="row">
+    <button id="save" class="accent">Сохранить</button>
+    <button id="openQwen">Qwen</button>
+    <button id="openDeepseek">DeepSeek</button>
+  </div>
+  <p class="hint">После сохранения обновите вкладки чатов. Расширение само вставляет JS поверх страницы.</p>
+  <script src="popup.js"></script>
+</body>
+</html>

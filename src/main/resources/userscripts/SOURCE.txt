@@ -1,0 +1,1 @@
+Canonical copy. Edit html/assets/js/aipilot/ in server151, then run deploy.py.

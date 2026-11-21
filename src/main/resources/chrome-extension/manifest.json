@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "AIPilot",
+  "version": "1.9.0",
+  "minimum_chrome_version": "111",
+  "description": "Вставляет JS AIPilot на страницы чатов Qwen и DeepSeek",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AIPilot"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "tabs"],
+  "host_permissions": [
+    "https://chat.qwen.ai/*",
+    "https://chat.deepseek.com/*",
+    "__API_MATCH__"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.qwen.ai/*",
+        "https://chat.deepseek.com/*",
+        "__API_MATCH__"
+      ],
+      "js": ["isolated.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": ["https://chat.qwen.ai/*"],
+      "js": ["config.js", "chrome-bridge.js", "bridge-core.js", "qwen-ui.js", "boot-qwen.js"],
+      "run_at": "document_idle",
+      "world": "MAIN",
+      "all_frames": false
+    },
+    {
+      "matches": ["https://chat.deepseek.com/*"],
+      "js": ["config.js", "chrome-bridge.js", "bridge-core.js", "deepseek-ui.js", "boot-deepseek.js"],
+      "run_at": "document_idle",
+      "world": "MAIN",
+      "all_frames": false
+    },
+    {
+      "matches": ["__API_MATCH__"],
+      "js": ["config.js", "chrome-bridge.js", "bridge-core.js", "boot-site.js"],
+      "run_at": "document_idle",
+      "world": "MAIN",
+      "all_frames": false
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

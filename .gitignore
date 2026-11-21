@@ -1,0 +1,16 @@
+.gradle/
+build/
+prompt/
+out/
+out/
+dist/
+*.iml
+.idea/
+__pycache__/
+*.pyc
+.DS_Store
+*.log
+.jcef-bundle/
+jcef-bundle/
+.tmp-jdk*/
+

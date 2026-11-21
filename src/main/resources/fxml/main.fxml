@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.aipilot.ui.MainController"
+           fx:id="appRoot" styleClass="root" prefWidth="440" prefHeight="560">
+    <VBox fx:id="appShell" styleClass="app-shell" maxWidth="Infinity" maxHeight="Infinity">
+        <HBox fx:id="titleBar" styleClass="title-bar" alignment="CENTER_LEFT" spacing="8">
+            <padding><Insets top="0" right="0" bottom="0" left="12"/></padding>
+            <Label text="AIPilot" styleClass="title-bar-brand"/>
+            <Circle fx:id="apiDot" radius="5" fill="#5c616a" styleClass="api-dot api-dot-off"/>
+            <Label fx:id="titleVersionLabel" styleClass="title-bar-version"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <HBox fx:id="titleChrome" alignment="TOP_RIGHT" spacing="0"/>
+        </HBox>
+        <StackPane fx:id="pageStack" styleClass="page-stack" VBox.vgrow="ALWAYS">
+            <BorderPane fx:id="mainPage">
+                <top>
+                    <HBox styleClass="tool-bar ai-page-head page-toolbar" alignment="CENTER_LEFT" spacing="8">
+                        <padding><Insets top="8" right="12" bottom="8" left="8"/></padding>
+                        <VBox spacing="2" HBox.hgrow="ALWAYS">
+                            <Label fx:id="agentStatusLabel" text="Не в сети" styleClass="page-brand"/>
+                            <Label fx:id="queueCountLabel" text="0 на очереди" styleClass="crumb-label"/>
+                            <Label fx:id="doneCountLabel" text="0 выполнено" styleClass="crumb-label"/>
+                        </VBox>
+                        <HBox alignment="CENTER_RIGHT" spacing="8" styleClass="page-toolbar-actions">
+                            <Button fx:id="refreshButton" onAction="#onRefresh" mnemonicParsing="false"
+                                    styleClass="icon-btn"/>
+                            <Button fx:id="detailToggle" text="подробно" onAction="#onDetailToggle"
+                                    styleClass="button-secondary toolbar-btn"/>
+                            <Button fx:id="loginButton" text="Войти" onAction="#onLogin"
+                                    styleClass="button-accent toolbar-btn"/>
+                            <Button fx:id="settingsButton" text="Настройки" onAction="#onSettings"
+                                    styleClass="button-secondary toolbar-btn"/>
+                        </HBox>
+                    </HBox>
+                </top>
+                <center>
+                    <StackPane fx:id="agentLogHost" styleClass="agent-log-host page-body"/>
+                </center>
+            </BorderPane>
+            <BorderPane fx:id="settingsPage" visible="false" managed="false">
+                <top>
+                    <HBox styleClass="tool-bar ai-page-head page-toolbar" alignment="CENTER_LEFT" spacing="8">
+                        <padding><Insets top="8" right="12" bottom="8" left="8"/></padding>
+                        <VBox spacing="2" HBox.hgrow="ALWAYS">
+                            <Label text="Настройки" styleClass="page-brand"/>
+                            <Label text="Проекты, сервер, приложение" styleClass="crumb-label"/>
+                        </VBox>
+                        <HBox alignment="CENTER_RIGHT" spacing="8" styleClass="page-toolbar-actions">
+                            <Button fx:id="backButton" text="Назад" onAction="#onBackFromSettings"
+                                    styleClass="button-secondary toolbar-btn"/>
+                        </HBox>
+                    </HBox>
+                </top>
+                <center>
+                    <StackPane fx:id="settingsHost" styleClass="settings-host page-body"/>
+                </center>
+            </BorderPane>
+        </StackPane>
+    </VBox>
+</StackPane>
